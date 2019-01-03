@@ -1,0 +1,26 @@
+<!--header Starts-->
+<header>
+    <div class="navigation-container">
+        <div class="navigation-items">
+            <img src="../../../assets/img/logos/RiceToppers.png" alt="RiceToppers">
+            <a><strong>HOME</strong></a>
+            <a><strong>ABOUT US</strong></a>
+        </div>
+        <div class="user-tab-container">
+            <a *ngIf="isLoggedIn"><strong>SIGN-IN</strong></a>
+            <!-- <div class="profile-pic-container">
+                <img src="" alt="">
+            </div> -->
+            <div id="dropdown" class="greetings-container">
+                <div class="greetings-sub-container">
+                    <strong>Hi, {{username}}</strong>
+                    <span (click)="showDropdown()" class="fas fa-angle-down angle-down"></span>
+                </div>
+                <a class="dropdown-item"><div class="dropdown-bullet"></div>Account Details</a>
+                <a class="dropdown-item"><div class="dropdown-bullet"></div>View Order History</a>
+                <a class="dropdown-item"><div class="dropdown-bullet"></div>Sign-out</a>
+            </div>
+        </div>
+    </div>
+</header>
+<!--header Ends-->

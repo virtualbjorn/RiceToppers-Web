@@ -1,0 +1,41 @@
+<!--Login Page Starts-->
+<section id="login">
+    <div class="container-fluid">
+        <div class="row full-height-vh">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="card card-inverse gradient-genesis-green text-center width-400">
+                    <div class="card-img overlap" id="login-logo">
+                        <img alt="element 06" class="mb-1" src="assets/img/genesis.png" width="190">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-block">
+                            <h3>Login</h3>
+                            <form novalidate="" (ngSubmit)="onSubmit()" #f="ngForm">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" ngModel required email>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="password" class="form-control" name="inputPass" id="inputPass" placeholder="Password" ngModel required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <button type="submit" *ngIf="!isLoggingIn" (click)="onSubmit()" [disabled]="!loginForm.valid" class="btn btn-pink btn-block btn-raised">Submit</button>
+                                        <img src="assets/img/loaders/ellipse-loader.gif" style="height: 70px;" *ngIf="isLoggingIn"/>
+                                        <button *ngIf="!isLoggingIn" (click)="onResetPassword()" class="btn btn-success btn-block btn-raised">Reset Password</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Login Page Ends-->

@@ -1,0 +1,72 @@
+.home-container-wrapper {
+    background-color: #D8D8D8;
+}
+.home-container {
+    width: 1366px;
+    height: 1722px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding-top: 52px;
+    .steps-to-order--container {
+        display: grid;
+        grid-template-rows: 75px auto;
+        width: 1237px;
+        height: 776px;
+        border: solid 4px #ff9900;
+        border-radius: 17px;
+        margin: 0 auto;
+        padding-top: 2rem;
+        text-align: center;
+        .steps-text-header {
+            font-size: 50px;
+            border: solid #ff9900;
+            border-width: 0;
+            border-bottom-width: 4px;
+            padding-bottom: 20px;
+            width: fit-content;
+            height: fit-content;
+            margin: 0 auto;
+        }
+        .steps--container {
+            grid-row: 2;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            .steps-item {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                align-items: center;
+                .steps-counter {
+                    width: 72px;
+                    height: 72px;
+                    border-radius: 50%;
+                    background-color: #ff9900;
+                    border-color: transparent;
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 15px;
+                    .steps-number {
+                        color: #fff;
+                        font-size: 50px;
+                        align-self: center;
+                    }
+                }
+                .steps-img {
+                    width: 216px;
+                    height: 432px;
+                    border: solid 1px #707070;
+                    margin-bottom: 18px;
+                }
+                span {
+                    width: 216px;
+                    font-size: 25px;
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+}
+strong, span {
+    font-family: 'Lato Black';    
+}

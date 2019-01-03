@@ -1,0 +1,60 @@
+// Overrides
+
+input {
+    color: black !important;
+}
+
+#login-logo {
+    margin-bottom: 40px;
+}
+  
+#login-logo img {
+    width: 200px;
+
+    -webkit-animation: animatelogo 2s infinite; /* Safari 4+ */
+        -moz-animation:    animatelogo 2s infinite; /* Fx 5+ */
+        -o-animation:      animatelogo 2s infinite; /* Opera 12+ */
+        animation:         animatelogo 2s infinite; /* IE 10+ */
+}
+
+/* Animations */
+@-webkit-keyframes animatelogo {
+    0%,100% {
+          transform: translateY(0px);
+          -webkit-transform: translateY(0px); 
+      }
+    50% {
+          transform: translateY(20px);
+          -webkit-transform: translateY(20px); 
+      }
+  }
+  @-moz-keyframes animatelogo {
+    0%,100% {
+          transform: translateY(0px);
+          -webkit-transform: translateY(0px); 
+      }
+    50% {
+          transform: translateY(20px);
+          -webkit-transform: translateY(20px); 
+      }
+  }
+  @-o-keyframes animatelogo {
+    0%,100% {
+          transform: translateY(0px);
+          -webkit-transform: translateY(0px); 
+      }
+    50% {
+          transform: translateY(20px);
+          -webkit-transform: translateY(20px); 
+      }
+  }
+  @keyframes animatelogo {
+    0%,100% {
+          transform: translateY(0px);
+          -webkit-transform: translateY(0px); 
+      }
+    50% {
+          transform: translateY(20px);
+          -webkit-transform: translateY(20px); 
+      }
+  }
