@@ -3,22 +3,24 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
 
 import { ContentPagesRoutingModule } from "./content-pages-routing.module";
-import { ContentLayoutPageComponent } from './content-layout-page/content-layout-page.component';
 import { LoginPageComponent } from './login/login.component';
-import { ResetPasswordPageComponent } from './reset-password/reset-password.component';
 import { HomePageComponent } from "./home/home.component";
+import { SharedModule } from 'app/shared/shared.module';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { FoodOutletComponent } from './food-outlet/food-outlet.component';
 
 @NgModule({
     imports: [
         CommonModule,
         ContentPagesRoutingModule,
-        FormsModule        
+        FormsModule,
+        SharedModule
     ],
     declarations: [
-        ContentLayoutPageComponent,
         LoginPageComponent,
-        ResetPasswordPageComponent,
-        HomePageComponent
+        HomePageComponent,
+        AboutUsComponent,
+        FoodOutletComponent
     ]
 })
 export class ContentPagesModule { }

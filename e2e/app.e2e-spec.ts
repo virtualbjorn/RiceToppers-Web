@@ -1,10 +1,10 @@
-import { GenesisPage } from './app.po';
+import { RiceToppersPage } from './app.po';
 
 describe('matngular App', () => {
-  let page: GenesisPage;
+  let page: RiceToppersPage;
 
   beforeEach(() => {
-    page = new GenesisPage();
+    page = new RiceToppersPage();
   });
 
   it('should expect true to be true', () => {

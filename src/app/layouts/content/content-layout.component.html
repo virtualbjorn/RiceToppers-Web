@@ -1,5 +1,8 @@
 <div class="wrapper">
+    <app-loader [loaderUrl]="loaderUrl"></app-loader>
     <app-header></app-header>
-    <router-outlet></router-outlet>
+    <div class="main-body-wrapper">
+        <router-outlet></router-outlet>
+    </div>
     <app-footer></app-footer>
 </div>

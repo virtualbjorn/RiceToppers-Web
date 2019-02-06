@@ -8,5 +8,13 @@ export const environment = {
   reusablePaths: {
     SAMPLE_PATH_NAME: 'sample'
     // PATH_NAME: '<path name in route>' // Reusable paths are paths that store their state
+  },
+  firebase: {
+    apiKey: "AIzaSyD2znyV0Z9K-2KryxPMLLEbn8menRLBmRQ",
+    authDomain: "vbjorn-ricetoppers.firebaseapp.com",
+    databaseURL: "https://vbjorn-ricetoppers.firebaseio.com",
+    projectId: "vbjorn-ricetoppers",
+    storageBucket: "vbjorn-ricetoppers.appspot.com",
+    messagingSenderId: "599901132966"
   }
 };

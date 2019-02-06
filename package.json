@@ -1,5 +1,5 @@
 {
-  "name": "Genesis",
+  "name": "RiceToppers",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -26,13 +26,12 @@
     "@ng-bootstrap/ng-bootstrap": "^1.1.2",
     "@types/clone": "^0.1.30",
     "@types/jquery": "^3.3.29",
-    "angularfire2": "^5.0.0-rc.5-next",
     "bootstrap": "^4.0.0-beta",
     "bourbon": "^4.3.4",
     "classlist.js": "^1.1.20150312",
     "clone": "^2.1.1",
     "core-js": "^2.5.0",
-    "firebase": "^4.13.1",
+    "firebase": "^5.8.2",
     "intl": "^1.2.5",
     "jquery": "^3.2.1",
     "ng2-toastr": "^4.1.2",

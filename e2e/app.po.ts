@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class GenesisPage {
+export class RiceToppersPage {
   navigateTo() {
     return browser.get('/');
   }

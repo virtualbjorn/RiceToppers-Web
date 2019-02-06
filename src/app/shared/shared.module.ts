@@ -9,6 +9,8 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { ToggleFullscreenDirective } from "./directives/toggle-fullscreen.directive";
 import { HeaderComponent } from './header/header.component';
+import { FormsModule } from '@angular/forms';
+import { LoaderComponent } from './loader/loader.component';
 
 
 
@@ -19,19 +21,22 @@ import { HeaderComponent } from './header/header.component';
         FooterComponent,
         NavbarComponent,
         SidebarComponent,
+        LoaderComponent,
         ToggleFullscreenDirective,
-        NgbModule
+        NgbModule,
     ],
     imports: [
         RouterModule,
         CommonModule,
-        NgbModule
+        NgbModule,
+        FormsModule
     ],
     declarations: [
         HeaderComponent,
         FooterComponent,
         NavbarComponent,
         SidebarComponent,
+        LoaderComponent,
         ToggleFullscreenDirective
     ]
 })

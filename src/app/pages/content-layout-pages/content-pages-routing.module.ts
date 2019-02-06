@@ -1,40 +1,32 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ContentLayoutPageComponent } from './content-layout-page/content-layout-page.component';
-import { LoginPageComponent } from './login/login.component';
-import { ResetPasswordPageComponent } from './reset-password/reset-password.component';
 import { HomePageComponent } from './home/home.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { FoodOutletComponent } from './food-outlet/food-outlet.component';
 
 const routes: Routes = [
   {
     path: '',
     children: [
       {
-        path: 'login',
-        component: LoginPageComponent,
-        data: {
-          title: 'Login'
-        }
-      },
-      {
-        path: 'reset-password',
-        component: ResetPasswordPageComponent,
-        data: {
-          title: 'Reset Password'
-        }
-      },
-      {
-        path: 'content-layout-sample-page',
-        component: ContentLayoutPageComponent,
-        data: {
-          title: 'Content Layout Sample Page'
-        }
-      },
-      {
         path: 'home',
         component: HomePageComponent,
         data: {
           title: 'Home'
+        }
+      },
+      {
+        path: 'about-us',
+        component: AboutUsComponent,
+        data: {
+          title: 'About Us'
+        }
+      },
+      {
+        path: 'food-outlet',
+        component: FoodOutletComponent,
+        data: {
+          title: 'Food Outlet Component'
         }
       }
     ]

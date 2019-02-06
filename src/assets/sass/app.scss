@@ -7,5 +7,35 @@
 @import "scss/core";
 @import "scss/fonts/weather-icons";
 @import "scss/plugins";
-@import "scss/demo";  // Remove this SCSS from production
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import "scss/demo"; // Remove this SCSS from production
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
+.button {
+  font-weight: bold;
+  border-radius: 50px;
+  width: 250px;
+  height: 45px;
+  font-size: 30px;
+  border-color: transparent;
+  background: #092066;
+  color: #ffffff;
+}
+
+.scroll-disable {
+  overflow: hidden;
+}
+
+.navigation-text {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: bold;
+  background: transparent;
+  border-color: transparent;
+  
+}
+.navigation-text:hover {
+  color: #092066;
+}
+.navigation-text:focus {
+  outline: none;
+}

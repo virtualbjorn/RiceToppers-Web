@@ -1,20 +1,20 @@
 <!--Footer Starts-->
 <footer>
     <div class="footer-container">
+        <div class="footer-wrapper"></div>
         <div class="footer-main">
             <div>
                 <button><span class="fab fa-facebook-f"></span></button>
                 <button><span class="fab fa-instagram"></span></button>
                 <button><span class="fab fa-twitter"></span></button>
                 <button><span class="fab fa-facebook-messenger"></span></button>
-                <!-- <i class="fab fa-facebook-f"></i> -->
             </div>
             <div class="navigation-items">
-                    <a>HOME</a>
-                    <div class="vl"></div>
-                    <a>ABOUT US</a>
-                    <div class="vl"></div>
-                    <a>CONTACT</a>
+                <button (click)="_navigationService.navigateToHome()" class="navigation-text">HOME</button>
+                <div class="vl"></div>
+                <button (click)="_navigationService.navigateToAboutUs()" class="navigation-text">ABOUT US</button>
+                <div class="vl"></div>
+                <button (click)="_navigationService.navigateToContactUs()" class="navigation-text">CONTACT US</button>
             </div>
         </div>
         <div class="copyright text-center footer-copyright">

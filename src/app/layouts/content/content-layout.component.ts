@@ -7,5 +7,5 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ContentLayoutComponent  {
-
+    loaderUrl: string = "../../../assets/img/loaders/ripple-loader.gif";
 }
