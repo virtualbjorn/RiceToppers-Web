@@ -1,0 +1,173 @@
+.sign-up-wrapper {
+  display: grid;
+  grid-template-rows: auto auto auto;
+}
+.sign-up-text-header {
+  grid-row: 1;
+  font-size: 2rem;
+  font-family: "Lato Black";
+  align-self: center;
+  margin: 0 auto 0.6875rem;
+}
+.separator-line {
+  grid-row: 2;
+  width: 18.75rem;
+  margin-bottom: 2.125rem;
+}
+.sign-up-form-container {
+  grid-row: 3;
+  border: solid 4px #ff9900;
+  border-radius: 1rem;
+  display: grid;
+  padding: 2.25rem 3.5rem;
+  grid-row-gap: 2.8125rem;
+  .account-type-container,
+  .email-address-container,
+  .name-container,
+  .first-name-container,
+  .middle-name-container,
+  .last-name-container,
+  .contact-number-container,
+  .address-container,
+  .passwords-container,
+  .password-container,
+  .confirm-password-container {
+    display: grid;
+    align-items: center;
+  }
+  .first-name-container,
+  .middle-name-container,
+  .last-name-container,
+  .contact-number-container,
+  .address-container,
+  .password-container,
+  .confirm-password-container {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    label {
+      grid-row: 1;
+      margin-bottom: 1rem;
+    }
+    input {
+      grid-row: 2;
+    }
+    .error-message-container {
+      grid-row: 3;
+    }
+  }
+  .account-type-container,
+  .email-address-container {
+    grid-template-columns: auto 56.625rem;
+    grid-column-gap: 1rem;
+  }
+  .account-type-container {
+    select {
+      width: 28.3125rem;
+    }
+  }
+  .name-container {
+    grid-template-columns: 1fr 15rem 1fr;
+    grid-column-gap: 2rem;
+    .first-name-container {
+    }
+    .middle-name-container {
+      input {
+        width: 15rem;
+      }
+    }
+    .last-name-container {
+    }
+  }
+  .address-container {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    grid-column-gap: 0.625rem;
+    grid-row-gap: 1rem;
+    .address-sub-container {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      display: grid;
+      grid-template-columns: 66rem auto;
+      .remove-button {
+        grid-column: 2;
+        width: 2.5rem;
+        align-self: center;
+        margin-right: 0.25rem;
+        background: #ff0000;
+        font-size: 1.5625rem;
+      }
+      textarea {
+        line-height: 2rem;
+        grid-column: 1;
+      }
+    }
+    label {
+      grid-row: 1;
+      grid-column: 1;
+    }
+    .add-new-button,
+    .remove-button {
+      color: #ffffff;
+      border-color: transparent;
+      font-family: "Lato Regular";
+      font-weight: bold;
+      height: 2.5rem;
+      border-radius: 1.25rem;
+      margin: 0 0 0 auto;
+    }
+    .add-new-button {
+      grid-row: 1;
+      grid-column: 2;
+      background: #092066;
+      width: 12.5rem;
+      font-size: 1.25rem;
+    }
+  }
+  .passwords-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 1.25rem;
+    .password-container,
+    .confirm-password-container {
+    }
+  }
+}
+.sign-up-form--text {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Lato Regular";
+}
+.sign-up-form--input,
+.sign-up-form--input--textarea {
+  border: solid 3px #092066;
+  border-radius: 0.5rem;
+  padding-left: 0.5rem;
+  font-size: 2rem;
+  font-family: "Lato Regular";
+  font-weight: bold;
+}
+.sign-up-form--input--textarea {
+  overflow: hidden;
+}
+.sign-up-form--input {
+  height: 3.125rem;
+}
+.sign-up-form--input-error {
+  border-color: #ff0000;
+}
+.sign-up-button {
+  background: #092066;
+  border-radius: 1.5625rem;
+  border-color: transparent;
+  width: 10.625rem;
+  height: 3.125rem;
+  color: #ffffff;
+  font-family: "Lato Black";
+  font-size: 2rem;
+  margin: 0 auto;
+}
+.error-message {
+  color: #ff0000;
+}
+.error-message-container {
+  min-height: 1.5625rem;
+}

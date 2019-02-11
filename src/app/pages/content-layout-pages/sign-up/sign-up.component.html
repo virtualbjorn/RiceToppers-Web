@@ -1,0 +1,72 @@
+<div class="sign-up-wrapper">
+    <strong class="sign-up-text-header">Sign-Up Form</strong>
+    <div class="separator-line"></div>
+    <div class="sign-up-form-container">
+        <div class="account-type-container">
+            <label for="account-type" class="sign-up-form--text">Account Type</label>
+            <select name="account-type" id="account-type" [(ngModel)]="selectedAccountType"
+                (ngModelChange)="setCurrentAccountType()" class="sign-up-form--input">
+                <option *ngFor="let accountType of accountTypes" [ngValue]="accountType">{{accountType.accountTypeName}}
+                </option>
+            </select>
+        </div>
+        <div class="email-address-container">
+            <label for="email-address" class="sign-up-form--text">Email Address</label>
+            <input type="email" placeholder="Email Address" name="email-address" id="email-address" [(ngModel)]="signUpUserData.email"
+                class="sign-up-form--input">
+        </div>
+        <div class="name-container">
+            <div class="first-name-container">
+                <label for="first-name" class="sign-up-form--text">First Name</label>
+                <input type="text" placeholder="First Name" name="first-name" id="first-name" [(ngModel)]="signUpUserData.firstName"
+                    class="sign-up-form--input" required>
+            </div>
+            <div class="middle-name-container">
+                <label for="middle-name" class="sign-up-form--text">Middle Name</label>
+                <input type="text" placeholder="Middle Name" name="middle-name" id="middle-name" [(ngModel)]="signUpUserData.middleName"
+                    class="sign-up-form--input" required>
+            </div>
+            <div class="last-name-container">
+                <label for="last-name" class="sign-up-form--text">Last Name</label>
+                <input type="text" placeholder="Last Name" name="last-name" id="last-name" [(ngModel)]="signUpUserData.lastName"
+                    class="sign-up-form--input" required>
+            </div>
+        </div>
+        <div class="contact-number-container">
+            <label for="contact-number" class="sign-up-form--text">Contact Number</label>
+            <input type="text" placeholder="Contact Number" name="contact-number" id="contact-number" [(ngModel)]="signUpUserData.contactNo"
+                class="sign-up-form--input" required>
+        </div>
+        <div class="address-container">
+            <label class="sign-up-form--text">Address</label>
+            <button class="add-new-button" (click)="onAddNewAddress()">Add New Address</button>
+            <div class="address-sub-container" *ngFor="let address of tempAddressArray; let i = index">
+                <textarea class="sign-up-form--input--textarea" id="textarea-{{i}}" rows="2"
+                    [value]="signUpUserData.address[i]" (input)="signUpUserData.address[i] = $event.target.value"
+                    placeholder="Address {{i+1}}" required></textarea>
+                <!-- <button class="add-button"><span class="fas fa-plus"></span></button> -->
+                <button class="remove-button" (click)="onRemoveAddress(i)" *ngIf="i != 0"><span
+                        class="fas fa-times"></span></button>
+            </div>
+        </div>
+        <div class="passwords-container">
+            <div class="password-container">
+                <label for="password" class="sign-up-form--text">Password</label>
+                <input type="password" placeholder="Password" name="password" id="password" minlength="8" [(ngModel)]="signUpUserData.password"
+                    class="sign-up-form--input" required #password="ngModel" [ngClass]="{'sign-up-form--input-error': password.invalid && password.dirty}">
+                <div class="error-message-container">
+                    <small *ngIf="password.invalid && password.errors.minlength" class="error-message">Passwords must be at least 8 characters long.</small>
+                </div>
+            </div>
+            <div class="confirm-password-container">
+                <label for="confirm-password" class="sign-up-form--text">Confirm Password</label>
+                <input type="password" placeholder="Confirm Password" name="confirm-password" minlength="8" id="confirm-password"
+                    [(ngModel)]="signUpUserData.confirmPassword" class="sign-up-form--input" required #confirmPassword="ngModel">
+                <div class="error-message-container">
+                    <small *ngIf="signUpUserData.password != signUpUserData.confirmPassword && confirmPassword.dirty" class="error-message">Passwords does not match</small>
+                </div>
+            </div>
+        </div>
+        <button class="sign-up-button" (click)="onSignUp()">SIGN-UP</button>
+    </div>
+</div>

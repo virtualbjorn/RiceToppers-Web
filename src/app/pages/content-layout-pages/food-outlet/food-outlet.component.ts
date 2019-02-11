@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from 'app/services/user/user.service';
-import { FirebaseApiService } from 'app/services/firebase-api/firebase-api.service';
+import { FirebaseAPIService } from 'app/services/firebase-api/firebase-api.service';
 import { NavigationService } from 'app/services/utilities/navigation/navigation.service';
+import { UIHelperService } from 'app/services/ui-helper/ui-helper.service';
 
 @Component({
     selector: 'app-food-outlet',
@@ -11,14 +12,18 @@ import { NavigationService } from 'app/services/utilities/navigation/navigation.
 export class FoodOutletComponent implements OnInit {
     isLoading: boolean = true;
     constructor(
-        public _userService: UserService,
-        private _ngFireService: FirebaseApiService,
-        public _navigationService: NavigationService
+        public _user: UserService,
+        private _ngFire: FirebaseAPIService,
+        public _navigation: NavigationService,
+        public _uiHelper: UIHelperService
     ) { }
 
     async ngOnInit() {
+        if(this._user.currentAccountType != 'food-provider') {
+            this._navigation.navigateToHome();
+        }
         try {
-            this._userService.foodOutletData = await this._ngFireService.getFoodOutletData('cAAFrBzaWqPMQ40qosPo1w8fKst1');
+            this._user.foodOutletData = await this._ngFire.getFoodOutletData('cAAFrBzaWqPMQ40qosPo1w8fKst1');
             this.isLoading = false;
         } catch (error) {
             console.log(error);
@@ -26,10 +31,10 @@ export class FoodOutletComponent implements OnInit {
     }
 
     async updateFoodMenu() {
-        this._navigationService.showLoader();
+        this._uiHelper.showLoader();
         try {
-            await this._ngFireService.updateFoodOutletData('cAAFrBzaWqPMQ40qosPo1w8fKst1');
-            this._navigationService.hideLoader();
+            await this._ngFire.updateFoodOutletData('cAAFrBzaWqPMQ40qosPo1w8fKst1');
+            this._uiHelper.hideLoader();
         } catch (error) {
             console.log(error);
         }

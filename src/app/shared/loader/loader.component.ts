@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { NavigationService } from 'app/services/utilities/navigation/navigation.service';
+import { UIHelperService } from 'app/services/ui-helper/ui-helper.service';
 
 @Component({
     selector: 'app-loader',
@@ -7,7 +7,7 @@ import { NavigationService } from 'app/services/utilities/navigation/navigation.
     styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent {
-    constructor(public _navigationService: NavigationService) { }
+    constructor(public _uiHelper: UIHelperService) { }
 
     @Input() loaderUrl: string = '';
     @Input('loading') isLoading: boolean = false;

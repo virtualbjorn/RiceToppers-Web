@@ -1,15 +1,23 @@
-@import "scss/variables";
-@import "../../../node_modules/bootstrap/scss/bootstrap";
-@import "scss/core/palette";
-@import "scss/app-variables";
-@import "scss/mixins";
-@import "scss/custom-bootstrap";
-@import "scss/core";
-@import "scss/fonts/weather-icons";
-@import "scss/plugins";
-@import "scss/demo"; // Remove this SCSS from production
-@import url("https://fonts.googleapis.com/css?family=Lato");
+@import 'scss/variables';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+@import 'scss/core/palette';
+@import 'scss/app-variables';
+@import 'scss/mixins';
+@import 'scss/custom-bootstrap';
+@import 'scss/core';
+@import 'scss/fonts/weather-icons';
+@import 'scss/plugins';
+@import 'scss/demo'; // Remove this SCSS from production
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
+@font-face {
+  font-family: 'Lato Black';
+  src: url('./../fonts/Lato-Black.ttf');
+}
+@font-face {
+  font-family: 'Lato Regular';
+  src: url('./../fonts/Lato-Regular.ttf');
+}
 .button {
   font-weight: bold;
   border-radius: 50px;
@@ -31,11 +39,14 @@
   font-weight: bold;
   background: transparent;
   border-color: transparent;
-  
 }
 .navigation-text:hover {
   color: #092066;
 }
 .navigation-text:focus {
   outline: none;
+}
+.separator-line {
+  border: solid 2px #ff9900;
+  margin: 0 auto;
 }

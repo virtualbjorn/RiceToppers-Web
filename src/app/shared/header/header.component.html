@@ -2,29 +2,54 @@
 <header>
     <div class="navigation-container">
         <div class="navigation-items">
-            <img src="../../../assets/img/logos/RiceToppers_Logo_Black.png" alt="RiceToppers" (click)="_navigationService.navigateToHome()">
-            <button (click)="_navigationService.navigateToHome()" class="navigation-text">HOME</button>
-            <button (click)="_navigationService.navigateToAboutUs()" class="navigation-text">ABOUT US</button>
+            <img src="../../../assets/img/logos/RiceToppers_Logo_Black.png" alt="RiceToppers"
+                (click)="_navigation.navigateToHome()">
+            <button (click)="_navigation.navigateToHome()" class="navigation-text">HOME</button>
+            <button (click)="_navigation.navigateToAboutUs()" class="navigation-text">ABOUT US</button>
         </div>
         <div class="user-tab-container">
-            <div *ngIf="!isLoggedIn" id="dropdown" class="sign-in-container">
+            <div *ngIf="!_user.isSignedIn" id="dropdown" class="sign-in-container">
                 <div class="sign-in-sub-container">
                     <a class="sign-in-button"><strong>SIGN-IN</strong></a>
                     <button *ngIf="isSignInClick" class="fas fa-times-circle close-sign-in-button"></button>
                 </div>
-                <div class="dropdown-item--sign-up">
-                    <label for="user-name">User Name:</label>
-                    <input type="text" [(ngModel)]="username" keyboardType="email" name="user-name" id="user-name">
+                <div class="dropdown-item--sign-in">
+                    <label for="account-type">Account Type</label>
+                    <select id="account-type" [(ngModel)]="selectedAccountType" (ngModelChange)="setCurrentAccountType()">
+                        <option *ngFor="let accountType of accountTypes" [ngValue]="accountType">{{accountType.accountTypeName}}</option>
+                    </select>
                 </div>
-                <div class="dropdown-item--sign-up">
+                <div class="dropdown-item--sign-in">
+                    <label for="user-name">Email Address:</label>
+                    <input type="text" [(ngModel)]="email" keyboardType="email" name="user-name" id="user-name">
+                </div>
+                <div class="dropdown-item--sign-in">
                     <label for="user-password">Password:</label>
                     <input type="password" [(ngModel)]="password" name="user-password" id="user-password">
                 </div>
-                <div class="dropdown-item--sign-up">
+                <div class="dropdown-item--sign-in">
                     <button class="button" (click)="onLogin()">Login</button>
                 </div>
+                <div class="dropdown-item--sign-in">
+                    <button class="button sign-up-button" (click)="_navigation.navigateToSignUp()">Sign-up</button>
+                </div>
             </div>
-            <div *ngIf="isLoggedIn" id="dropdown" class="greetings-container">
+            <div *ngIf="_user.isSignedIn && _user.currentAccountType == 'customer'" id="dropdown" class="greetings-container">
+                <div class="greetings-sub-container">
+                    <strong>Hi, {{_user.userData.firstName}}</strong>
+                    <span (click)="showDropdown()" class="fas fa-angle-down angle-down"></span>
+                </div>
+                <a class="dropdown-item">
+                    <div class="dropdown-bullet"></div>Account Details
+                </a>
+                <a class="dropdown-item">
+                    <div class="dropdown-bullet"></div>View Order History
+                </a>
+                <a class="dropdown-item" (click)="onSignOut()">
+                    <div class="dropdown-bullet"></div>Sign-out
+                </a>
+            </div>
+            <div *ngIf="_user.isSignedIn && _user.currentAccountType == 'food-provider'" id="dropdown" class="greetings-container">
                 <div class="greetings-sub-container">
                     <strong>Hi, {{name}}</strong>
                     <span (click)="showDropdown()" class="fas fa-angle-down angle-down"></span>

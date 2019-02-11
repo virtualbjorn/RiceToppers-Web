@@ -1,5 +1,7 @@
 <div class="food-outlet-wrapper">
-    <h1 class="food-outlet-name">Combo Ni Ante</h1>
+    <div class="food-outlet-name-container">
+        <strong class="food-outlet-name">Combo Ni Ante</strong>
+    </div>
     <div class="food-menu-container">
         <div class="food-menu-header-container">
             <strong class="food-menu-header-text">Food Name</strong>
@@ -7,13 +9,13 @@
             <strong class="food-menu-header-text">Food Price</strong>
             <strong class="food-menu-header-text">Food Availability</strong>
         </div>
-        <div class="food-item" *ngFor="let foodDetail of _userService.foodOutletData.foodMenu">
+        <div class="food-item" *ngFor="let foodDetail of _user.foodOutletData.foodMenu">
             <strong class="food-name">{{foodDetail.fN}}</strong>
             <span class="food-description">{{foodDetail.fD}}</span>
             <strong class="food-price">Php{{foodDetail.fPC.toFixed(2)}}</strong>
             <select class="food-availability_selection" [(ngModel)]="foodDetail.iA">
-                <option [ngValue]="true">Availability</option>
-                <option [ngValue]="false">Not Availability</option>
+                <option [ngValue]="true">Available</option>
+                <option [ngValue]="false">Not Available</option>
             </select>
         </div>
         <div class="food-item--empty" *ngIf="isLoading">

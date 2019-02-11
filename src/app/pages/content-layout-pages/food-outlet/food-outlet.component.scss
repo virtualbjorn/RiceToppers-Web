@@ -1,17 +1,23 @@
 .food-outlet-wrapper {
   display: grid;
-  margin: 25px 5%;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  background: #ffffff;
 }
-.food-outlet-name {
-  font-weight: bold;
-  margin-bottom: 30px;
+.food-outlet-name-container {
   grid-row: 1;
-  grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column: 1;
+  display: grid;
+  margin: 1.5rem 0;
+  .food-outlet-name {
+    font-weight: bold;
+    align-self: center;
+    font-size: 2.5rem;
+  }
 }
 .food-menu-container {
   grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 3;
   grid-row: 2;
   border: 5px #ff9900 solid;
   border-radius: 10px;
@@ -59,14 +65,13 @@
 }
 .update-button {
   align-self: center;
-  position: absolute;
-  right: 5%;
   color: #ffffff;
   background: #092066;
   width: fit-content;
-  font-size: 30px;
+  margin: auto 0 auto auto;
+  font-size: 1.5rem;
   font-weight: bold;
-  grid-column: 3;
+  grid-column: 2;
   grid-row: 1;
   padding: 10px;
   border-radius: 10px;
@@ -77,10 +82,10 @@
   outline: none;
 }
 .food-item--empty {
-    display: grid;
-    height: 500px;
-    img {
-        align-self: center;
-        margin: 0 auto;
-    }
+  display: grid;
+  height: 500px;
+  img {
+    align-self: center;
+    margin: 0 auto;
+  }
 }

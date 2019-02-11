@@ -1,8 +1,10 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { NavigationService } from 'app/services/utilities/navigation/navigation.service';
-import { FirebaseApiService } from 'app/services/firebase-api/firebase-api.service';
+import { FirebaseAPIService } from 'app/services/firebase-api/firebase-api.service';
 import { FirebaseAuthResponse } from 'app/models/firebase-auth-response';
 import { UserService } from 'app/services/user/user.service';
+import { AccountType } from 'app/models/user-data';
+import { UIHelperService } from 'app/services/ui-helper/ui-helper.service';
 
 @Component({
     // moduleId: module.id,
@@ -11,18 +13,27 @@ import { UserService } from 'app/services/user/user.service';
     styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
     isLoggedIn: boolean = false;
+    isSignup: boolean = false;
     isSignInClick: boolean = false;
-    username: string = '';
+
+    email: string = '';
     password: string = '';
-    name: string = 'Test Outlet';
+
+    accountTypes: AccountType[] = [{ accountTypeName: 'Customer', accountTypeID: 'customer' }, { accountTypeName: 'Food Provider', accountTypeID: 'food-provider' }];
+    selectedAccountType: AccountType = this.accountTypes[0];
 
     constructor(
-        public _navigationService: NavigationService,
-        private _ngFireService: FirebaseApiService,
-        private _userService: UserService
+        public _navigation: NavigationService,
+        private _ngFire: FirebaseAPIService,
+        public _user: UserService,
+        public _uiHelper: UIHelperService
     ) { }
+
+    ngOnInit(): void {
+        this._user.currentAccountType = this.selectedAccountType.accountTypeID;
+    }
 
     showDropdown() {
         $('#dropdown').toggleClass('dropdown');
@@ -31,18 +42,22 @@ export class HeaderComponent {
     }
 
     onSignOut() {
-        this._navigationService.navigateToHome();
-        this.isLoggedIn = false;
+        this._navigation.navigateToHome();
+        this._user.isSignedIn = false;
     }
 
     async onLogin() {
-        this._navigationService.showLoader();
-        let response: FirebaseAuthResponse = await this._ngFireService.foodProviderAuth(this.username, this.password);
-        this._userService.userData = await this._ngFireService.getFoodProviderData(response.user.uid);
-        this._navigationService.hideLoader();
-        this._navigationService.navigateToFoodOutlet();
-        // console.log(this._userService.userData);
-        // this.name = this._userService.foodOutletData.foodProviderData.name;
-        this.isLoggedIn = true;
+        this._uiHelper.showLoader();
+        let response: FirebaseAuthResponse = await this._ngFire.authenticateUser(this.email, this.password);
+        this._user.userData = await this._ngFire.getUserData(response.user.uid, this.selectedAccountType.accountTypeID);
+        this._user.isSignedIn = true;
+        this._uiHelper.hideLoader();
+        // this._navigation.navigateToHome();
+        this.email = null;
+        this.password = null;
+    }
+
+    setCurrentAccountType() {
+        this._user.currentAccountType = this.selectedAccountType.accountTypeID;
     }
 }

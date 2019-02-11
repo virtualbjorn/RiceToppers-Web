@@ -9,6 +9,6 @@ import { NavigationService } from 'app/services/utilities/navigation/navigation.
 })
 
 export class FooterComponent {
-    constructor(public _navigationService: NavigationService) { }
+    constructor(public _navigation: NavigationService) { }
     currentDate: Date = new Date();
 }

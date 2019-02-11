@@ -22,9 +22,11 @@ import { CoreRouteReuseStrategy } from './core/route-strategy/core-route-reuse-s
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
-import { FirebaseApiService } from './services/firebase-api/firebase-api.service';
+import { FirebaseAPIService } from './services/firebase-api/firebase-api.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UserService } from './services/user/user.service';
+import { FNCHelperService } from './services/fnc-helper/fnc-helper.service';
+import { UIHelperService } from './services/ui-helper/ui-helper.service';
 
 @NgModule({
     declarations: [
@@ -52,8 +54,10 @@ import { UserService } from './services/user/user.service';
     providers: [
         SweetAlertService,
         NavigationService,
-        FirebaseApiService,
+        FirebaseAPIService,
         UserService,
+        FNCHelperService,
+        UIHelperService,
         { provide: RouteReuseStrategy, useClass: CoreRouteReuseStrategy }
     ],
     bootstrap: [AppComponent]

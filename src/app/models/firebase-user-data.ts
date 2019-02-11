@@ -1,15 +1,12 @@
-export class AccountCreated {
-	seconds: number;
-	nanoseconds: number;
-}
-
 export class FirebaseUserDocument {
-	accountCreated: AccountCreated;
+	accountCreated: string;
 	accountType: string;
 	contactNo: string;
-	deliveryAddress: string;
+	address: string[];
 	email: string;
-	fullName: string;
+	firstName: string;
+	middleName: string;
+	lastName: string;
 	imageUrl: string;
 	uid: string;
 }

@@ -1,3 +1,3 @@
-<div *ngIf="_navigationService.isLoading || isLoading" class="loader-wrapper">
-    <img [src]="loaderUrl" alt="loader" class="loader-image">
+<div *ngIf="_uiHelper.isLoading" class="loader-wrapper">
+    <img [src]="_uiHelper.loaderURL" alt="loader" class="loader-image">
 </div>
