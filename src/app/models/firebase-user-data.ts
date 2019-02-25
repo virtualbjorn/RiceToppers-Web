@@ -1,7 +1,7 @@
 export class FirebaseUserDocument {
 	accountCreated: string;
 	accountType: string;
-	contactNo: string;
+	contactNumber: string;
 	address: string[];
 	email: string;
 	firstName: string;

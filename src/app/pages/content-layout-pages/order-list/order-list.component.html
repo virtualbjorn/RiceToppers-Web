@@ -1,0 +1,63 @@
+<div class="order-list-wrapper">
+    <div class="order-list-name-container">
+        <strong class="order-list-name">Combo Ni Ante Order List</strong>
+    </div>
+    <div class="order-list-filter">
+        <strong>Filter List</strong>
+        <span class="filter-list" (click)="onFilter('All')">All</span>
+        <span class="filter-list" (click)="onFilter('Pending')">Pending</span>
+        <span class="filter-list" (click)="onFilter('Confirmed')">Confirmed</span>
+        <span class="filter-list" (click)="onFilter('On-Transit')">On-Transit</span>
+        <span class="filter-list" (click)="onFilter('Delivered')">Delivered</span>
+        <span class="filter-list" (click)="onFilter('Completed')">Completed</span>
+    </div>
+    <div class="order-list-container">
+        <div class="order-list-wrapper" *ngFor="let orderData of orderList">
+            <div class="order-list" *ngIf="currentFilter == 'All' || currentFilter == orderData.orderStatus">
+                <strong class="order-id">Order ID: {{orderData.id}}</strong>
+                <div class="order-status_selection">
+                    <label for="order-status">Order Status: </label>
+                    <select class="order-status-dropdown" id="order-status" [(ngModel)]="orderData.orderStatus"
+                        (ngModelChange)="updateOrderStatus(orderData.id, orderData.orderStatus)">
+                        <option [ngValue]="'Pending'">Pending</option>
+                        <option [ngValue]="'On-Transit'" *ngIf="orderData.orderType == 'For Delivery'">On-Transit
+                        </option>
+                        <option [ngValue]="'Confirmed'">Confirmed</option>
+                        <option [ngValue]="'Completed'" *ngIf="orderData.orderType == 'For Reservation'">Completed
+                        </option>
+                        <option [ngValue]="'Delivered'" *ngIf="orderData.orderType == 'For Delivery'">Delivered</option>
+                    </select>
+                </div>
+                <!-- <button class="update-button update-order-status-button" [disabled]="isLoading"
+                    (click)="updateOrderStatus(orderData.id, orderData.orderStatus)">Update Order Status</button> -->
+                <strong class="order-type">Order Type: {{orderData.orderType}}</strong>
+                <strong class="date-created">Date Created: {{orderData.timecreated}}</strong>
+                <div class="customer-details">
+                    <span class="customer-name">Name: {{orderData.userData.name}}</span>
+                    <span class="customer-contact-number">Contact Number: {{orderData.userData.contactNo}}</span>
+                    <span class="customer-delivery-address">Delivery Address:
+                        {{orderData.userData.deliveryAddress}}</span>
+                </div>
+                <div class="order-details-container">
+                    <div class="order-details">
+                        <strong class="order-details--header">Product Name</strong>
+                        <strong class="order-details--header">Quantity</strong>
+                        <strong class="order-details--header">Price</strong>
+                        <strong class="order-details--header">Amount</strong>
+                    </div>
+                    <div class="order-details" *ngFor="let orderItem of orderData.orderData">
+                        <span class="order-details-product-name">{{orderItem.productName}}</span>
+                        <span class="order-details-pieces-to-order">{{orderItem.piecesToOrder}}</span>
+                        <span class="order-details-product-price">{{orderItem.productPrice}}</span>
+                        <span class="order-details-total-price">{{orderItem.totalPrice}}</span>
+                    </div>
+                    <div class="order-details">
+                        <strong class="total-amount-label">Total Amount</strong>
+                        <strong class="total-amount-data">{{orderData.totalAmountPayable | currency:'PHP'}}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="update-button" [disabled]="isLoading" (click)="updateOrderList()">Update Order List</button>
+</div>

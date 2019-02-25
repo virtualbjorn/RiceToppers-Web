@@ -15,8 +15,10 @@
                 </div>
                 <div class="dropdown-item--sign-in">
                     <label for="account-type">Account Type</label>
-                    <select id="account-type" [(ngModel)]="selectedAccountType" (ngModelChange)="setCurrentAccountType()">
-                        <option *ngFor="let accountType of accountTypes" [ngValue]="accountType">{{accountType.accountTypeName}}</option>
+                    <select id="account-type" [(ngModel)]="selectedAccountType"
+                        (ngModelChange)="setCurrentAccountType()">
+                        <option *ngFor="let accountType of accountTypes" [ngValue]="accountType">
+                            {{accountType.accountTypeName}}</option>
                     </select>
                 </div>
                 <div class="dropdown-item--sign-in">
@@ -34,10 +36,11 @@
                     <button class="button sign-up-button" (click)="_navigation.navigateToSignUp()">Sign-up</button>
                 </div>
             </div>
-            <div *ngIf="_user.isSignedIn && _user.currentAccountType == 'customer'" id="dropdown" class="greetings-container">
+            <div *ngIf="_user.isSignedIn && _user.userData.accountType == 'customer'" id="dropdown"
+                class="greetings-container" (mouseleave)="hideDropdown()" (mouseenter)="showDropdown()">
                 <div class="greetings-sub-container">
                     <strong>Hi, {{_user.userData.firstName}}</strong>
-                    <span (click)="showDropdown()" class="fas fa-angle-down angle-down"></span>
+                    <span class="fas fa-angle-down angle-down"></span>
                 </div>
                 <a class="dropdown-item">
                     <div class="dropdown-bullet"></div>Account Details
@@ -49,16 +52,20 @@
                     <div class="dropdown-bullet"></div>Sign-out
                 </a>
             </div>
-            <div *ngIf="_user.isSignedIn && _user.currentAccountType == 'food-provider'" id="dropdown" class="greetings-container">
+            <div *ngIf="_user.isSignedIn && _user.userData.accountType == 'food-provider'" id="dropdown"
+                class="greetings-container" (mouseleave)="hideDropdown()" (mouseenter)="showDropdown()">
                 <div class="greetings-sub-container">
-                    <strong>Hi, {{name}}</strong>
-                    <span (click)="showDropdown()" class="fas fa-angle-down angle-down"></span>
+                    <strong>Hi, {{_user.userData.firstName}}</strong>
+                    <span class="fas fa-angle-down angle-down"></span>
                 </div>
                 <a class="dropdown-item">
                     <div class="dropdown-bullet"></div>Account Details
                 </a>
-                <a class="dropdown-item">
-                    <div class="dropdown-bullet"></div>View Order History
+                <a class="dropdown-item" (click)="_navigation.navigateToFoodOutlet()">
+                    <div class="dropdown-bullet"></div>Food Availability
+                </a>
+                <a class="dropdown-item" (click)="_navigation.navigateToOrderList()">
+                    <div class="dropdown-bullet"></div>Order List
                 </a>
                 <a class="dropdown-item" (click)="onSignOut()">
                     <div class="dropdown-bullet"></div>Sign-out

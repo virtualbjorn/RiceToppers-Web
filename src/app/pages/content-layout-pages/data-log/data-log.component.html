@@ -1,0 +1,45 @@
+<div class="data-log-wrapper">
+    <div class="grid-container">
+        <strong class="grid-header grid-row-1 grid-col-2" (click)="onFileUpload(0)"><button>Node A</button></strong>
+        <strong class="grid-header grid-row-1 grid-col-3" (click)="onFileUpload(1)"><button>Node B</button></strong>
+        <strong class="grid-header grid-row-1 grid-col-4" (click)="onFileUpload(2)"><button>Node C</button></strong>
+        <strong class="grid-header grid-row-1 grid-col-5" (click)="calculateAverageTime()"><button>Average</button></strong>
+        <strong class="grid-label-description grid-row-2 grid-col-1">Total Runtime</strong>
+        <strong class="grid-label-description grid-row-3 grid-col-1">Dim Mode</strong>
+        <strong class="grid-label-description grid-row-4 grid-col-1">Bright Mode</strong>
+        <div class="grid-sub-container grid-col-2">
+            <span class="grid-label-data">{{timeData[0].totalTime || ''}}</span>
+            <span class="grid-label-data">{{timeData[0].dimModeTime || ''}}</span>
+            <span class="grid-label-data">{{timeData[0].brightModeTime || ''}}</span>
+        </div>
+        <div class="grid-sub-container grid-col-3">
+            <span class="grid-label-data">{{timeData[1].totalTime || ''}}</span>
+            <span class="grid-label-data">{{timeData[1].dimModeTime || ''}}</span>
+            <span class="grid-label-data">{{timeData[1].brightModeTime || ''}}</span>
+        </div>
+        <div class="grid-sub-container grid-col-4">
+            <span class="grid-label-data">{{timeData[2].totalTime || ''}}</span>
+            <span class="grid-label-data">{{timeData[2].dimModeTime || ''}}</span>
+            <span class="grid-label-data">{{timeData[2].brightModeTime || ''}}</span>
+        </div>
+        <div class="grid-sub-container grid-col-4">
+            <span class="grid-label-data">{{averageTimeData.totalTime}}</span>
+            <span class="grid-label-data">{{averageTimeData.dimModeTime}}</span>
+            <span class="grid-label-data">{{averageTimeData.brightModeTime}}</span>
+        </div>
+    </div>
+    <input type="file" name="file-input" id="file-id" accept="" (change)="onFileSelected($event)" hidden>
+    <div class="start-end-datetime-input">
+        <strong class="grid-row-1 grid-col-1">Start Date Time</strong>
+        <input class="grid-row-1 grid-col-2" type="text" name="start-datetime" id="start-datetime"
+            [(ngModel)]="startDateTime">
+        <strong class="grid-row-2 grid-col-1">End Date Time</strong>
+        <input class="grid-row-2 grid-col-2" type="text" name="end-datetime" id="end-datetime"
+            [(ngModel)]="endDateTime">
+        <button class="grid-row-3 grid-col-2" (click)="calculateTimeDuration()">Calculate Node
+            {{nodes[currentNodeIndex].nodeLetter}} Time</button>
+    </div>
+    <div style="margin-top: 2rem; display: grid;">
+        <span *ngFor="let record of dataLogs">{{record}}</span>
+    </div>
+</div>

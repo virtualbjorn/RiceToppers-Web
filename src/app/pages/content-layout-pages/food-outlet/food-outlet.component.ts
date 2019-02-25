@@ -23,7 +23,8 @@ export class FoodOutletComponent implements OnInit {
             this._navigation.navigateToHome();
         }
         try {
-            this._user.foodOutletData = await this._ngFire.getFoodOutletData('cAAFrBzaWqPMQ40qosPo1w8fKst1');
+            this._user.foodOutletData = await this._ngFire.getFoodOutletData('c7XF1A8j1JX0mVemGBS7f7aKHcx1');
+            console.log(this._user.foodOutletData);
             this.isLoading = false;
         } catch (error) {
             console.log(error);
@@ -33,7 +34,7 @@ export class FoodOutletComponent implements OnInit {
     async updateFoodMenu() {
         this._uiHelper.showLoader();
         try {
-            await this._ngFire.updateFoodOutletData('cAAFrBzaWqPMQ40qosPo1w8fKst1');
+            await this._ngFire.updateFoodOutletData('c7XF1A8j1JX0mVemGBS7f7aKHcx1');
             this._uiHelper.hideLoader();
         } catch (error) {
             console.log(error);

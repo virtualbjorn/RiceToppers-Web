@@ -41,4 +41,8 @@ export class NavigationService {
   public navigateToSignUp() {
     this._router.navigate(['../sign-up'], { relativeTo: this._route })
   }
+
+  public navigateToOrderList() {
+    this._router.navigate(['../order-list'], { relativeTo: this._route })
+  }
 }

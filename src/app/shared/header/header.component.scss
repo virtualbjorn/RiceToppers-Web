@@ -51,8 +51,9 @@ header {
         grid-template-rows: 37px;
         position: absolute;
         top: 52px;
+        padding-right: 0.5rem;
         margin-left: -34px;
-        width: 214px;
+        width: auto;
         height: 45px;
         background-color: #fff;
         border-radius: 18px;
@@ -78,8 +79,7 @@ header {
             align-self: center;
             color: #ff9900;
             font-size: 39px;
-            margin-left: 174px;
-            position: absolute;
+            margin-left: 0.5rem;
           }
           .angle-down.active {
             transition: 0.3s;
@@ -113,7 +113,7 @@ header {
         grid-template-rows: 37px auto auto auto;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         transition-duration: 0.3s;
-        height: 150px;
+        height: auto;
         .dropdown-item {
           transition-duration: 0.5s;
           opacity: 1;
@@ -153,7 +153,7 @@ header {
       align-self: center;
     }
   }
-  .dropdown-item--sign-in{
+  .dropdown-item--sign-in {
     display: grid;
     width: 0;
     display: none;
@@ -161,7 +161,7 @@ header {
     font-size: 18px;
     padding: 4px 15px;
     border-color: transparent;
-    margin-bottom: 10px
+    margin-bottom: 10px;
   }
 }
 .sign-in-container:hover {
@@ -169,7 +169,7 @@ header {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   transition-duration: 1s;
   height: auto;
-  .dropdown-item--sign-in{
+  .dropdown-item--sign-in {
     display: grid;
     opacity: 1;
     width: auto;

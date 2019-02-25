@@ -30,7 +30,7 @@ export class FirebaseAPIService {
             this.ngFireStore.firestore.collection(userData.accountType).doc(userData.uid).set({
                 accountCreated: userData.accountCreated,
                 accountType: userData.accountType,
-                contactNo: userData.contactNo,
+                contactNo: userData.contactNumber,
                 address: userData.address,
                 email: userData.email,
                 firstName: userData.firstName,
@@ -100,7 +100,7 @@ export class FirebaseAPIService {
 
     getFoodOutletData(foodProviderUID: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.ngFireStore.collection('food-outlet').doc(foodProviderUID).valueChanges()
+            this.ngFireStore.collection('food-menu').doc(foodProviderUID).valueChanges()
                 .subscribe(
                     (response) => {
                         resolve(response);
@@ -113,7 +113,7 @@ export class FirebaseAPIService {
 
     updateFoodOutletData(foodProviderUID: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.ngFireStore.collection('food-outlet').doc(foodProviderUID).update({
+            this.ngFireStore.collection('food-menu').doc(foodProviderUID).update({
                 foodMenu: this._user.foodOutletData.foodMenu
             }).then((response) => {
                 resolve(response);
@@ -123,9 +123,9 @@ export class FirebaseAPIService {
         });
     }
 
-    getFoodOutletMenu(foodOutletId: string): Promise<any> {
+    getOrderList(foodOutletId?: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.ngFireStore.collection('food-outlet').doc(foodOutletId).valueChanges()
+            this.ngFireStore.collection('orders').valueChanges()
                 .subscribe(
                     (response) => {
                         resolve(response);
@@ -133,6 +133,20 @@ export class FirebaseAPIService {
                     (error) => {
                         reject(error)
                     });
+        });
+    }
+
+    updateOrderStatus(id: string, orderStatus: string): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.ngFireStore.collection('orders').doc(id).update({
+                orderStatus: orderStatus
+            }).then(
+                (response) => {
+                    resolve({success: true, message: `Successfully updated order status for Order ID: ${id}.`});
+                },
+                (error) => {
+                    reject(error)
+                });
         });
     }
 }

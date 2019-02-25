@@ -69,9 +69,7 @@ export class SignUpComponent implements OnInit {
 
     updateAddress(index: number) {
         let addressEl: any = document.querySelector(`#textarea-${index}`);
-        console.log(addressEl.value);
         this.signUpUserData.address[index] = addressEl.value;
-        // console.log(this.signUpUserData.address);
     }
 
     onAddNewAddress() {
@@ -96,7 +94,7 @@ export class SignUpComponent implements OnInit {
                     firstName: this.signUpUserData.firstName,
                     middleName: this.signUpUserData.middleName,
                     lastName: this.signUpUserData.lastName,
-                    contactNo: this.signUpUserData.contactNo,
+                    contactNumber: this.signUpUserData.contactNo,
                     address: this.signUpUserData.address,
                     uid: result.user.uid,
                     imageUrl: ''
