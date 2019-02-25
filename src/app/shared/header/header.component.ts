@@ -35,9 +35,9 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit(): void {
         this._user.currentAccountType = this.selectedAccountType.accountTypeID;
-        if(this._user.userData.accountCreated) {
-        this._user.currentAccountType = this._user.userData.accountType;
-        this.isLoggedIn = true;
+        if (this._user.userData) {
+            this._user.currentAccountType = this._user.userData.accountType;
+            this.isLoggedIn = true;
             this._user.isSignedIn = true;
         }
     }

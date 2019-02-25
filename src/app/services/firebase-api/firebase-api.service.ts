@@ -27,22 +27,12 @@ export class FirebaseAPIService {
 
     createUserData(userData: FirebaseUserDocument): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.ngFireStore.firestore.collection(userData.accountType).doc(userData.uid).set({
-                accountCreated: userData.accountCreated,
-                accountType: userData.accountType,
-                contactNo: userData.contactNumber,
-                address: userData.address,
-                email: userData.email,
-                firstName: userData.firstName,
-                middleName: userData.middleName,
-                lastName: userData.lastName,
-                imageUrl: userData.imageUrl,
-                uid: userData.uid
-            }).then((response) => {
-                resolve(response);
-            }).catch((error) => {
-                reject(error);
-            });
+            this.ngFireStore.firestore.collection(userData.accountType).doc(userData.uid).set(userData)
+                .then(() => {
+                    resolve({ success: true });
+                }).catch((error) => {
+                    reject(error);
+                });
         });
     }
 
@@ -142,7 +132,7 @@ export class FirebaseAPIService {
                 orderStatus: orderStatus
             }).then(
                 (response) => {
-                    resolve({success: true, message: `Successfully updated order status for Order ID: ${id}.`});
+                    resolve({ success: true, message: `Successfully updated order status for Order ID: ${id}.` });
                 },
                 (error) => {
                     reject(error)

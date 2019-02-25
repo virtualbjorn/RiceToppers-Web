@@ -33,24 +33,31 @@ export class SignUpComponent implements OnInit {
 
     isValidated(): boolean {
         if (!this.signUpUserData.email) {
+            this._sweetAlert.alertError('Please input a valid email address');
             document.querySelector('.email-address-container').scrollIntoView(true);
             return false;
         } else if (!this.signUpUserData.firstName) {
+            this._sweetAlert.alertError('Please input a valid first name');
             document.querySelector('.name-container').scrollIntoView(true);
             return false;
         } else if (!this.signUpUserData.middleName) {
+            this._sweetAlert.alertError('Please input a valid middle name');
             document.querySelector('.name-container').scrollIntoView(true);
             return false;
         } else if (!this.signUpUserData.lastName) {
+            this._sweetAlert.alertError('Please input a valid last name');
             document.querySelector('.name-container').scrollIntoView(true);
             return false;
         } else if (!this.signUpUserData.contactNo) {
+            this._sweetAlert.alertError('Please input a valid contact number!');
             document.querySelector('.contact-number-container').scrollIntoView(true);
             return false;
         } else if (!this.signUpUserData.address) {
+            this._sweetAlert.alertError('Please input a valid address!');
             document.querySelector('.address-container').scrollIntoView(true);
             return false;
         } else if (!this.signUpUserData.password && !this.signUpUserData.confirmPassword && this.signUpUserData.password != this.signUpUserData.confirmPassword) {
+            this._sweetAlert.alertError('Please re-check your password!');
             document.querySelector('.passwords-container').scrollIntoView(true);
             return false;
         }
@@ -86,6 +93,7 @@ export class SignUpComponent implements OnInit {
     async onSignUp() {
         if (this.isValidated()) {
             try {
+                this._uiHelper.showLoader();
                 let result = await this._ngFire.signUpUser(this.signUpUserData.email, this.signUpUserData.password);
                 let userCredentials: FirebaseUserDocument = {
                     accountCreated: result.user.metadata.creationTime,
@@ -94,13 +102,14 @@ export class SignUpComponent implements OnInit {
                     firstName: this.signUpUserData.firstName,
                     middleName: this.signUpUserData.middleName,
                     lastName: this.signUpUserData.lastName,
-                    contactNumber: this.signUpUserData.contactNo,
+                    contactNo: this.signUpUserData.contactNo,
                     address: this.signUpUserData.address,
                     uid: result.user.uid,
                     imageUrl: ''
                 }
                 await this._ngFire.createUserData(userCredentials);
                 await this._ngFire.sendEmailVerification();
+                this._uiHelper.hideLoader();
                 this._sweetAlert.alertSuccess('You have successfuly signed-up!');
                 this._navigation.navigateToHome();
             } catch (error) {
