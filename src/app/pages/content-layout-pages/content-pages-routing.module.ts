@@ -46,13 +46,13 @@ const routes: Routes = [
           title: 'Order List'
         }
       },
-      // {
-      //   path: 'data-log',
-      //   component: DataLogComponent,
-      //   data: {
-      //     title: 'Data Log'
-      //   }
-      // }
+      {
+        path: 'data-log',
+        component: DataLogComponent,
+        data: {
+          title: 'Data Log'
+        }
+      }
     ]
   }
 ];

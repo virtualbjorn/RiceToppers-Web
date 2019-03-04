@@ -23,7 +23,8 @@ import { OrderListComponent } from './order-list/order-list.component';
         AboutUsComponent,
         FoodOutletComponent,
         SignUpComponent,
-        OrderListComponent
+        OrderListComponent,
+        DataLogComponent
     ]
 })
 export class ContentPagesModule { }

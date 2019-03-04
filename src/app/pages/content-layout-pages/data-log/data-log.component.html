@@ -3,43 +3,73 @@
         <strong class="grid-header grid-row-1 grid-col-2" (click)="onFileUpload(0)"><button>Node A</button></strong>
         <strong class="grid-header grid-row-1 grid-col-3" (click)="onFileUpload(1)"><button>Node B</button></strong>
         <strong class="grid-header grid-row-1 grid-col-4" (click)="onFileUpload(2)"><button>Node C</button></strong>
-        <strong class="grid-header grid-row-1 grid-col-5" (click)="calculateAverageTime()"><button>Average</button></strong>
+        <strong class="grid-header grid-row-1 grid-col-5"
+            (click)="calculateAverageTime()"><button>Average</button></strong>
         <strong class="grid-label-description grid-row-2 grid-col-1">Total Runtime</strong>
         <strong class="grid-label-description grid-row-3 grid-col-1">Dim Mode</strong>
         <strong class="grid-label-description grid-row-4 grid-col-1">Bright Mode</strong>
         <div class="grid-sub-container grid-col-2">
-            <span class="grid-label-data">{{timeData[0].totalTime || ''}}</span>
-            <span class="grid-label-data">{{timeData[0].dimModeTime || ''}}</span>
-            <span class="grid-label-data">{{timeData[0].brightModeTime || ''}}</span>
+            <span class="grid-label-data">{{timeData[0].totalTime.toFixed(2) || ''}}</span>
+            <span class="grid-label-data">{{timeData[0].dimModeTime.toFixed(2) || ''}}</span>
+            <span class="grid-label-data">{{timeData[0].brightModeTime.toFixed(2) || ''}}</span>
         </div>
         <div class="grid-sub-container grid-col-3">
-            <span class="grid-label-data">{{timeData[1].totalTime || ''}}</span>
-            <span class="grid-label-data">{{timeData[1].dimModeTime || ''}}</span>
-            <span class="grid-label-data">{{timeData[1].brightModeTime || ''}}</span>
+            <span class="grid-label-data">{{timeData[1].totalTime.toFixed(2) || ''}}</span>
+            <span class="grid-label-data">{{timeData[1].dimModeTime.toFixed(2) || ''}}</span>
+            <span class="grid-label-data">{{timeData[1].brightModeTime.toFixed(2) || ''}}</span>
         </div>
         <div class="grid-sub-container grid-col-4">
-            <span class="grid-label-data">{{timeData[2].totalTime || ''}}</span>
-            <span class="grid-label-data">{{timeData[2].dimModeTime || ''}}</span>
-            <span class="grid-label-data">{{timeData[2].brightModeTime || ''}}</span>
+            <span class="grid-label-data">{{timeData[2].totalTime.toFixed(2) || ''}}</span>
+            <span class="grid-label-data">{{timeData[2].dimModeTime.toFixed(2) || ''}}</span>
+            <span class="grid-label-data">{{timeData[2].brightModeTime.toFixed(2) || ''}}</span>
         </div>
         <div class="grid-sub-container grid-col-4">
-            <span class="grid-label-data">{{averageTimeData.totalTime}}</span>
-            <span class="grid-label-data">{{averageTimeData.dimModeTime}}</span>
-            <span class="grid-label-data">{{averageTimeData.brightModeTime}}</span>
+            <span class="grid-label-data">{{averageTimeData.totalTime.toFixed(2)}}</span>
+            <span class="grid-label-data">{{averageTimeData.dimModeTime.toFixed(2)}}</span>
+            <span class="grid-label-data">{{averageTimeData.brightModeTime.toFixed(2)}}</span>
         </div>
     </div>
+    <table style="width:100%">
+        <tr>
+            <th><strong>Date Duration</strong></th>
+            <th><strong>Description</strong></th>
+            <th><button (click)="onFileUpload(0)">Node A</button></th>
+            <th><button (click)="onFileUpload(1)">Node B</button></th>
+            <th><button (click)="onFileUpload(2)">Node C</button></th>
+        </tr>
+        <tr>
+            <td rowspan="3">from -> to</td>
+            <td>Total Runtime</td>
+            <td>123123</td>
+            <td>123123</td>
+            <td>123123</td>
+        </tr>
+        <tr>
+            <td>Dim Mode</td>
+            <td>123123</td>
+            <td>123123</td>
+            <td>123123</td>
+        </tr>
+        <tr>
+            <td>Bright Mode</td>
+            <td>123123</td>
+            <td>123123</td>
+            <td>123123</td>
+        </tr>
+    </table>
     <input type="file" name="file-input" id="file-id" accept="" (change)="onFileSelected($event)" hidden>
     <div class="start-end-datetime-input">
-        <strong class="grid-row-1 grid-col-1">Start Date Time</strong>
+        <!-- <strong class="grid-row-1 grid-col-1">Start Date Time</strong>
         <input class="grid-row-1 grid-col-2" type="text" name="start-datetime" id="start-datetime"
             [(ngModel)]="startDateTime">
         <strong class="grid-row-2 grid-col-1">End Date Time</strong>
         <input class="grid-row-2 grid-col-2" type="text" name="end-datetime" id="end-datetime"
-            [(ngModel)]="endDateTime">
-        <button class="grid-row-3 grid-col-2" (click)="calculateTimeDuration()">Calculate Node
-            {{nodes[currentNodeIndex].nodeLetter}} Time</button>
+            [(ngModel)]="endDateTime"> -->
+        <!-- <button class="grid-row-3 grid-col-2" (click)="calculateTimeDuration()">Calculate Node
+            {{nodes[currentNodeIndex].nodeLetter}} Time</button> -->
+        <button class="grid-row-3 grid-col-2" (click)="calculateTimeDurationV2()">Calculate Testing Duration</button>
     </div>
-    <div style="margin-top: 2rem; display: grid;">
+    <!-- <div style="margin-top: 2rem; display: grid;">
         <span *ngFor="let record of dataLogs">{{record}}</span>
-    </div>
+    </div> -->
 </div>
